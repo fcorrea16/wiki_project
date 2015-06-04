@@ -1,8 +1,17 @@
+<!-- SHOWS SPECIFIC SELECT ARTICLE - 1 ARTICLE -->
+
 <h1><%=@article["name"]%></h1>
-<h2><%=@article["created_at"]%></h2>
-<h3><%=@article["category_id"]%></h3>
+
+
+<h3>created by: <a href=""><%=@article["fname"]%> <%=@article["lname"]%></a></h3>
+
+<h3>created at: <%=@article["created_at"]%></h3>
+
+<% if @article["created_at"] != @article_update["edited_on"] %>
+	<h3>updated by: <%=@article_update["fname"]%> <%=@article_update["lname"]%></h3>
+	<h3>updated on: <%=@article["edited_on"]%> </h3>
+<%end%>
+
 <p><%=@article["content"]%></p>
 
-<form method='POST' action='/articles/<%=@article["id"]%>/edit'> 
-	<input type="submit" value="update post">
-</form>
+<a href="/articles/<%=@article["id"]%>/update"> UPDATE POST</a>

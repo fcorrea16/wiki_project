@@ -1,0 +1,36 @@
+<!-- LOGGED IN USER PROFILE -->
+
+<h1><%=@user['fname']%></h1>
+
+<form method="POST" action='/login'> 
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="submit" value="Logout" name="logout">
+</form>
+
+<p>UPDATE YOUR PROFILE</p>
+<form method="post" action="/profile/update">
+	<label>First Name</label>
+	<input type="text" name="fname" value="<%=@user["fname"]%>">
+
+	<label>Last Name</label>
+	<input type="text" name="lname" value="<%=@user["lname"]%>">
+
+	<label>Email</label>
+	<input type="text" name="email" value="<%=@user["email"]%>">
+
+	<label>Current Password</label>
+	<input type="password" name="password1">	
+
+	<p>Set new password</p>	
+
+	<label>New Password</label>
+	<input type="password" name="password2">		
+
+	<label>Retype New Password</label>
+	<input type="password" name="password3">		
+	<br>
+	<label>Bio</label>
+	<textarea name="bio" value="<%=@user["bio"]%>"></textarea>
+	<input type="submit" value="update profile">
+
+</form>

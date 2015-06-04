@@ -1,0 +1,19 @@
+<!-- FORM TO UPDATE ARTICLE -->
+
+<form method="post" action="/articles/<%=@article["id"]%>/update">
+	<label>Name of Article</label>
+	<input name="name" type="text" value="<%=@article["name"]%>">
+
+	<label>Category</label>
+	<select name="categories_1"> 
+		<% @categories.each do |category| %>
+		<option value="<%= category["id"]%>"><%= category["name"]%> </option>
+		<%end%>
+	</select>
+	
+	<label>Content</label>
+	<textarea name="content"><%=@article["content"]%></textarea>
+	
+	<input type="submit" value="Update Article">
+</form>
+

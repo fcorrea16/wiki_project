@@ -23,7 +23,8 @@ CREATE TABLE articles (
 	created_at 	TIMESTAMP NOT NULL,
 	edited_on 	TIMESTAMP NOT NULL,
 	category_id INTEGER 	REFERENCES categories(id),
-	author_id 	INTEGER 	REFERENCES users(id)
+	created_by 	INTEGER 	REFERENCES users(id),
+	updated_by 	INTEGER		REFERENCES users(id)
 );
 
 

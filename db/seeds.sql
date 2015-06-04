@@ -1,8 +1,8 @@
-INSERT INTO authors 
+
+INSERT INTO users 
 (fname,lname,email,password,bio)
 VALUES 
 ('fernanda','correa','nandasc@gmail.com','pass', 'hi'), 
-('nanda','sampaio','fer@gmail.com','pass1', 'my name is ... '), 
 ('yas','martins','yas@gmail.com','pass2', 'test'), 
 ('violet','knockout','vko@gmail.com','pass3', 'hello'), 
 ('tara','bahgat','tara@gmail.com','pass4', 'what up'), 
@@ -13,33 +13,19 @@ VALUES
 
 
 INSERT INTO categories
-(cat_name,summary)
+(name)
 VALUES
-('burgers', 'best burgers in the city'),
-('cheap', 'cheap quality rest in the city'),
-('traditional', 'traditional restaurants in the city');
-
-INSERT INTO categories
-(cat_name)
-VALUES
+('burgers'), 
+('cheap'), 
 ('new'),
-('fancy');
+('fancy'),
+('traditional');
 
 
--- INSERT INTO tags 
--- (name)
--- VALUES
--- ('fancy'),
--- ('traditional'),
--- ('classic'),
--- ('cheap'),
--- ('burgers'),
--- ('desserts');
 
-
--- INSERT INTO articles
--- (name,content,tags,created_at,edited_on, category_id)
--- VALUES
--- ('Cheap rest in nyc', 'vapiano,chipotle,shake shack,dos toros', '[cheap,nyc]', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,2),
--- ('Traditional rest in nyc', 'balthazar, cipriani,', '[traditional,nyc]', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,3),
--- ('Best Burger in nyc', 'five guys, shake shack, umami', '[burgers,nyc]', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
+INSERT INTO articles
+(name,content,created_at,edited_on, category_id, created_by, updated_by)
+VALUES
+('Cheap rest in nyc', 'vapiano,chipotle,shake shack,dos toros', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 1, 4),
+('Traditional rest in nyc', 'balthazar, cipriani,', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,5, 3, 3),
+('Best Burger in nyc', 'five guys, shake shack, umami', CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,2, 2);

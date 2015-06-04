@@ -1,3 +1,5 @@
+<!-- FORM TO CREATE A NEW ARTICLE -->
+
 <form method="post" action="/articles/new/post">
 	<label>Name of Article</label>
 	<input name="name" type="text">
@@ -5,7 +7,7 @@
 	<label>Category</label>
 	<select name="categories_1"> 
 		<% @categories.each do |category| %>
-		<option value="<%= category["id"]%>"><%= category["cat_name"]%> </option>
+		<option value="<%= category["id"]%>"><%= category["name"]%> </option>
 		<%end%>
 	</select>
 	
