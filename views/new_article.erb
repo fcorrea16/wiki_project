@@ -1,0 +1,17 @@
+<form method="post" action="/articles/new/post">
+	<label>Name of Article</label>
+	<input name="name" type="text">
+
+	<label>Category</label>
+	<select name="categories_1"> 
+		<% @categories.each do |category| %>
+		<option value="<%= category["id"]%>"><%= category["cat_name"]%> </option>
+		<%end%>
+	</select>
+	
+	<label>Content</label>
+	<textarea name="content" placeholder="insert your article here"></textarea>
+	
+	<input type="submit" value="Add new Article">
+</form>
+

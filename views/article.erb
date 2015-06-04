@@ -1,0 +1,8 @@
+<h1><%=@article["name"]%></h1>
+<h2><%=@article["created_at"]%></h2>
+<h3><%=@article["category_id"]%></h3>
+<p><%=@article["content"]%></p>
+
+<form method='POST' action='/articles/<%=@article["id"]%>/edit'> 
+	<input type="submit" value="update post">
+</form>

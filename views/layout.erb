@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Wiki page test</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+	<% if user_login? == true %>
+		<p><%= "You are logged in" %></p>
+	<% else %>
+		<p><%= "You are not logged in" %></p>
+	<% end %>
+	<%= yield%>
+</body>
+</html>
