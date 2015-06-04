@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS articles;
 
-CREATE TABLE authors (
+CREATE TABLE users (
 	id 			 SERIAL   PRIMARY KEY,
 	fname 	 VARCHAR  NOT NULL,
 	lname 	 VARCHAR  NOT NULL,
@@ -23,12 +23,12 @@ CREATE TABLE articles (
 	created_at 	TIMESTAMP NOT NULL,
 	edited_on 	TIMESTAMP NOT NULL,
 	category_id INTEGER 	REFERENCES categories(id),
-	author_id 	INTEGER 	REFERENCES authors(id)
+	author_id 	INTEGER 	REFERENCES users(id)
 );
 
 
 -- REFERENCES categories(id),
--- REFERENCES authors(id)
+-- REFERENCES users(id)
 
 -- CREATE TABLE tags (
 -- 	id SERIAL PRIMARY KEY,
