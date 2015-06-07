@@ -1,19 +1,29 @@
 <!-- FORM TO UPDATE ARTICLE -->
+<div class="center">
+	<h1>Update Post</h1>
 
-<form method="post" action="/articles/<%=@article["id"]%>/update">
-	<label>Name of Article</label>
-	<input name="name" type="text" value="<%=@article["name"]%>">
+	<form method="post" action="/articles/<%=@article["id"]%>/update">
+		<label>Name of Article</label>
+		<br>
+		<input class="others" name="name" type="text" value="<%=@article["name"]%>">
+		<br>
+		<label>Category</label>
+		<br>
+		<select class="others" name="categories_1"> 
+			<% @categories.each do |category| %>
+			<option class="others" value="<%= category["id"]%>"><%= category["name"]%> </option>
+			<%end%>
+		</select>
+		<br>	
+		<label>Content</label>
+		<br>
+		<textarea name="content"><%=@article["content"]%></textarea>
+		<br>
+		<input class="button" type="submit" value="Update Article">
+	</form>
 
-	<label>Category</label>
-	<select name="categories_1"> 
-		<% @categories.each do |category| %>
-		<option value="<%= category["id"]%>"><%= category["name"]%> </option>
-		<%end%>
-	</select>
-	
-	<label>Content</label>
-	<textarea name="content"><%=@article["content"]%></textarea>
-	
-	<input type="submit" value="Update Article">
-</form>
+</div>
 
+<div class="clearrow"></div>
+
+<!-- action="mailto:youremailaddress -->

@@ -1,8 +1,16 @@
 <!-- SHOWS ALL ARTICLE NAME WITJ LINKS TO IT -->
 
 <h1> ARTICLES</h1>
+<div class="profile">
 <ul>
 	<% @articles.each do |article| %>
+	<div class="fleft">
 	<li><a href="/articles/<%=article["id"]%>"><%=article["name"]%></a></li>
+	<li class="timeset"><%=article["edited_on"]%></li>
+	<li><%= article['content'][0..250]%> ...</li>
+	</div>
 	<%end%>
 </ul>
+<div class="clearrow"></div>
+</div>
+

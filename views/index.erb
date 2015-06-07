@@ -1,14 +1,37 @@
 <!-- MAIN HOMEPAGE -->
 
-<form method="POST" action='/login'>
-	<input name="email" placeholder="Your email" type="text">
-	<input name="password" placeholder="Your password" type="password">
-	<input type="submit" value="Log in">
-</form>
+<h1>EAT NYC</h1>
 
-<form method="POST" action='/login'> 
-	<input type="hidden" name="_method" value="DELETE">
-	<input type="submit" value="Logout" name="logout">
-</form>
 
-<a href="/articles/new">Create new article</a>
+	<div class="home left">
+		<h3>Articles</h3>
+			<ul>
+					<% @articles.take(5).each do |article| %>
+					<li><a href="/articles/<%=article["id"]%>"><%=article["name"]%></a></li>
+					<li><%= article['content'][0..150]%> ...</li>
+					<%end%>
+			<li class="more"><a href="/articles/all">SEE ALL →</a></li>
+			</ul>	
+	</div>
+
+
+	<div class="home right">
+		<a href="/articles/new" class="heading_link">New Article →</a>
+	</div>
+
+	<div class="home right">
+		<a href="/authors/all" class="heading_link">Authors →</a>
+				<% @users.take(5).each do |user| %>
+					<li><a href="/author/<%=user["id"]%>"><%= user['fname'].capitalize%> <%= user['lname'].capitalize%></a></li>
+				<%end%>
+		</ul>	
+		
+	</div>
+
+	<div class="home right">
+		<a href="/categories" class="heading_link">Categories →</a>
+	</div>
+
+
+
+

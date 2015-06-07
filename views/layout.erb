@@ -4,15 +4,48 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Wiki page test</title>
-	<link rel="stylesheet" href="">
+	<!-- <link rel="stylesheet" href="/styles/normalize.css"> -->
+	<link rel="stylesheet" href="/styles/style.css">
+	
 </head>
 <body>
+	<header>
+		<div class="nav"> 
+			<div class="login_info">
+				<% if user_login? == true %>
+					<a href="/profile/<%=@user["fname"]%>" class="navlink">My profile</a>
+					<form method="POST" action='/login'> 
+						<input class="formlogin"type="hidden" name="_method" value="DELETE">
+						<input class="buttonlogin" type="submit" value="Logout" name="logout">
+					</form>
 
-	<% if user_login? == true %>
-		<p><%= "You are logged in" %></p>
-	<% else %>
-		<p><%= "You are not logged in" %></p>
-	<% end %>
+				<% else %>
+					<a href="/new_user" class="navlink">New user?</a>
+					<form method="POST" action='/login'>
+						<input class="formlogin" name="email" placeholder="Your email" type="text">
+						<input class="formlogin" name="password" placeholder="Your password" type="password">
+						<input class="buttonlogin" type="submit" value="Log in">
+					</form>			
+				<% end %>
+
+			</div>
+		</div>
+
+	</header>
+	<a href="/"><img src="/images/hand-eating2.png" class="hand"></a>
+
+	<img src="/images/fork_bottom2.png" class="fork">
+
+	<div class="content">
 	<%= yield%>
+	</div>
+
+	<script type="text/javascript" src="/scripts/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="/scripts/moment.js"></script>
+	<script type="text/javascript" src="/scripts/script.js"></script>
+
 </body>
 </html>
+
+
+

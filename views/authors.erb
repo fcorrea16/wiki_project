@@ -1,0 +1,11 @@
+<div class="center">
+	<h1>AUTHORS</h1>
+	<ul>
+		<% @users.each do |user| %>
+			<li><a href="/author/<%=user["id"]%>"><%= user['fname'].capitalize%> <%= user['lname'].capitalize%></a></li>
+		<%end%>
+	</ul>	
+
+</div>
+
+<div class="clearrow"></div>

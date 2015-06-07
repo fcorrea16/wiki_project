@@ -1,19 +1,44 @@
 <!-- FORM TO CREATE A NEW ARTICLE -->
+<div class="center">
+	<h1>New</h1>
 
-<form method="post" action="/articles/new/post">
-	<label>Name of Article</label>
-	<input name="name" type="text">
+	<h3 class="new_cat">Create Category</h3>
+	<div class="new_cat_info margintop">
+		<form method="POST" action="/category/new">
+			<br>
+			<label>Category Name</label>
+			<br>
+			<input class="others" type="text" name="newcat">
+			<input class="button" type="submit" value="Add new Category">
+		</form>
+	</div>
 
-	<label>Category</label>
-	<select name="categories_1"> 
-		<% @categories.each do |category| %>
-		<option value="<%= category["id"]%>"><%= category["name"]%> </option>
-		<%end%>
-	</select>
-	
-	<label>Content</label>
-	<textarea name="content" placeholder="insert your article here"></textarea>
-	
-	<input type="submit" value="Add new Article">
-</form>
 
+	<form method="post" action="/articles/new/post">
+		<h3 class="new_cat">Create Article</h3>
+		<br>
+		<label class="margintop">Name of Article</label>
+		<br>
+		<input class="others" name="name" type="text">
+		<br>
+		<label>Category</label>
+		<br>
+		<select name="categories_1" class="others"> 
+			<% @categories.each do |category| %>
+			<option value="<%= category["id"]%>" ><%= category["name"]%> </option>
+			<%end%>
+		</select>
+		<br>
+		<br>
+		<label>Content</label>
+		<br>
+		<textarea name="content" placeholder="insert your article here"></textarea>
+		<br>
+		<input class="button" type="submit" value="Add new Article">
+	</form>
+
+
+
+</div>
+
+<div class="clearrow"></div>

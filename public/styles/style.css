@@ -1,0 +1,269 @@
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One);
+
+body {
+	margin: 0;
+	background-color: #47D1D1;
+	font-family: helvetica;
+	font-size: 15px;
+	line-height: 20px;
+	text-align: center;
+	color: #003366;
+}
+
+h1 {
+	font-family: 'Fredoka One';
+	font-size: 9em;
+	color: white;
+	text-align: center;
+	line-height: 0.9em;
+	margin-top: 0;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 0;
+}
+
+h3 {
+	font-family: 'Fredoka One';
+	font-size: 1.5em;
+	color: #003366;
+	line-height: 0.5em;
+	margin: 0;
+	padding-top:10px;
+	padding-bottom: 15px;
+	border-bottom: dotted 1px white;
+}
+
+h2 {
+	font-family: 'Fredoka One';
+	font-size: 1em;
+	color: #003366;
+	line-height: 1em;
+	margin: 0;
+}
+
+a {
+	font-family: 'Fredoka One';
+	font-size: 1.2em;
+	line-height: 1.4em;
+	text-decoration: underline;
+	color: #CC0066;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+li {
+	list-style-type: none;
+	padding-top: 10px;
+	color: #003366;
+	line-height: 25px;
+}
+
+a:hover {
+	color: white;
+}
+
+.heading_link{
+	font-family: 'Fredoka One';
+	font-size: 1.5em;
+	color: #003366;
+	line-height: 0.5em;
+	margin: 0;
+	display: block;
+	padding-bottom: 15px;
+	border-bottom: dotted 1px white;
+	text-decoration: none;
+}
+
+/* HOMEPAGE LAYOUT.ERB*/
+
+.more{
+	background-color: #CC0066;
+	margin-top: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	width: 150px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.more a {
+	color: white;
+	text-decoration: none;
+}
+
+.more:hover{
+	background-color: #003366;
+}
+
+
+form {
+	display: inline;
+}
+
+.content {
+	margin-right: auto;
+	margin-left: auto;
+	width: 60%;
+	height: 700px;
+	text-align: left
+}
+
+.home {
+	border: solid 1px white;
+	padding: 15px;
+	text-align: left;
+	margin-bottom: 25px;
+	background: rgba(255, 255, 255, .2);
+}
+.left {
+	float: left;
+	width: 62%;
+}
+
+.right{
+	float: right;
+	width: 25%;
+	min-height: 25px;
+}
+
+
+/* NAVIGATION BAR*/
+
+.navlink {
+	display: inline;
+	font-size: 10px;
+	padding-right: 20px;
+	margin-top: 15px;
+}
+
+.nav {
+	margin: 0;
+	background-image: url("/images/background-yellow.png");
+	background-repeat: repeat-x;
+	height: 40px;
+	padding-left: 15px;
+}
+
+.login_info {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	margin: 0;
+	height: 40px;
+}
+
+.buttonlogin {
+	height: 22px;
+	border: solid 1px yellow;
+	background-color: white;
+	color: #666;
+}
+
+.buttonlogin:hover {
+	height: 22px;
+	border: solid 1px yellow;
+	background-color: #FF9933;
+	color: #FFF;
+}
+
+.formlogin {
+	height: 18px;
+	padding-left: 3px;
+	border: solid 1px yellow;
+}
+
+
+/* IMAGES HOME */
+.hand {
+	position: fixed;
+	left: -10px;
+	top: 0;
+}
+
+.fork {
+	position: fixed;
+	right: -50px;
+	bottom: -1px;
+}
+
+
+
+/* PROFILE PAGE & FORMS*/
+.center{
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+.others{
+	padding: 8px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	width: 80%;
+	border: solid 1px white;
+}
+
+.margintop {
+	margin-top: 25px;
+	margin-bottom: 40px;
+}
+
+
+textarea {
+	height: 200px;
+	width: 80%;
+	padding: 8px;
+	border: solid 1px #fff;
+}
+
+
+/* ARTICLES */
+
+.timeset {
+	margin: 0;
+	padding: 0;
+}
+
+
+/* GENERAL */
+
+.button {
+	background-color: #CC0066;
+	padding: 5px;
+	border-radius: 5px;
+	width: 200px;
+	text-align: center;
+	border: solid 1px #CC0066;
+	margin-top: 25px;
+	color: white;
+	font-family: 'Fredoka One';
+	font-size: 1em;
+	line-height: 1.2em;
+}
+
+
+.button:hover{
+	background-color: #003366;
+	border: solid 1px #003366;
+}
+
+.fleft {
+	float: left;
+	width: 45%;
+	padding-right: 20px;
+}
+
+.clearrow {
+	height: 50px;
+	clear: both;
+}
+
+.aligncenter {
+	text-align: center;
+}
+
+

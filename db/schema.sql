@@ -3,12 +3,13 @@ DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS articles;
 
 CREATE TABLE users (
-	id 			 SERIAL   PRIMARY KEY,
-	fname 	 VARCHAR  NOT NULL,
-	lname 	 VARCHAR  NOT NULL,
-	email 	 VARCHAR  NOT NULL,
-	password VARCHAR  NOT NULL,
-	bio 		 VARCHAR
+	id 			 	SERIAL   PRIMARY KEY,
+	fname 	 	VARCHAR  NOT NULL,
+	lname 	 	VARCHAR  NOT NULL,
+	email 	 	VARCHAR  NOT NULL,
+	password 	VARCHAR  NOT NULL,
+	bio 		 	VARCHAR
+	picture		VARCHAR
 );
 
 CREATE TABLE categories (

@@ -26,8 +26,14 @@ module Wiki
 			end	
 		end	#user_login?
 
+		
+
+
 		# HOMEPAGE SETUP ----------------------------
 		get '/' do 
+			@articles = $db.exec_params("SELECT * FROM articles ORDER by created_at DESC")
+			@users = $db.exec_params("SELECT * FROM users ORDER BY fname ASC;")
+			@user = $db.exec_params("SELECT * from users WHERE id = $1;", [current_user]).first
 		erb :index, layout: :layout
 		end	#index
 
@@ -38,22 +44,28 @@ module Wiki
 		end	
 
 		post '/new_user' do 
-
-			redirect '/'
+			if params[:password1] == params[:password2] && params[:password1] != nil
+				$db.exec_params("INSERT INTO users (fname,lname,email,password,bio) VALUES ($1, $2, $3, $4, $5);", [params[:fname], params[:lname], params[:email], params[:password1], params[:bio]])
+				redirect '/'
+			else 
+				redirect '/notallowed'	
+			end	
 		end
 
 
-		# LOGIN SETUP
+		# LOGIN SETUP ----------------------------
 		post '/login' do 
 			@password = params[:password]
 			@email = params[:email]
 			@user = $db.exec_params("SELECT * from users WHERE email = $1;", [@email]).first
 			if @user['password'] == @password && @user['email'] == @email
 				session[:user_id] = @user["id"]
-				redirect "/profile/#{@user['fname']}"
+				# redirect "/profile/#{@user['fname']}"
+				redirect '/'
 			else 
 				redirect '/notallowed'
 			end		
+
 		end
 
 		delete '/login' do 
@@ -65,16 +77,17 @@ module Wiki
     # USER PROFILE SETUP AND EDITING ----------------------------
 
 		get '/profile/:fname' do 
-			@user = $db.exec_params("SELECT * from users WHERE id = $1;", [current_user]).first
-			@id = @user['id']
-			if params[:fname] != @user['fname']
-				redirect '/notallowed'
-			elsif user_login? == true
+			@user = $db.exec_params("SELECT * from users WHERE fname = $1;", [params[:fname]]).first
+			if @user['id'] == current_user
 				erb :profile, layout: :layout
+			else
+				redirect '/notallowed'
 			end
 		end	
 
 		get '/notallowed' do  # user does not have acces to other people's profile pages
+			@message1 = "You cannot view this page"
+			@message2 = ""
 			erb :not_allowed, layout: :layout
 		end
 
@@ -98,6 +111,7 @@ module Wiki
 
 		get '/articles/new' do 
 			@categories = $db.exec_params("SELECT * from categories;")
+			@user = $db.exec_params("SELECT * from users WHERE id = $1;", [current_user]).first
 			if user_login? == false
 				redirect '/notallowed'
 			else 	
@@ -131,6 +145,7 @@ module Wiki
 			@article_update = $db.exec_params("SELECT articles.updated_by, users.fname, users.lname 
 				FROM articles JOIN users ON articles.updated_by =  users.id
 				WHERE articles.id = $1;", [params[:id]]).first
+
 			erb :article, layout: :layout
 		end
 
@@ -152,9 +167,55 @@ module Wiki
 
 
 		# AUTHOR PROFILE FOR PUBLIC ----------------------------
-		get '/user/:id' do 
+		get '/author/:id' do 
+			@id=params[:id]
+			@user = $db.exec_params("SELECT * FROM users WHERE id=$1;", [@id]).first
+			@arts_created = $db.exec_params("SELECT created_by,name,id FROM articles WHERE created_by= $1;", [@id])
+			@arts_updated = $db.exec_params("SELECT updated_by,name,id FROM articles WHERE updated_by= $1;", [@id])
+			erb :author_page, layout: :layout
+		end	
+
+
+		# ALL USERS ----------------------------
+		get '/authors/all' do 
+			@users = $db.exec_params("SELECT * FROM users ORDER BY fname ASC;")
+			erb :authors, layout: :layout
+		end	
+
+		# CATEGORIES ----------------------------
+
+		get '/categories' do 
+			@categories = $db.exec_params("SELECT * FROM categories ORDER BY name ASC")
+			erb :categories, layout: :layout
+		end	
+
+		get '/categories/:id' do 
+			@id=params[:id]
+			@category= $db.exec_params("SELECT * FROM categories WHERE id=$1;", [@id]).first
+			@articles = $db.exec_params("SELECT * FROM articles WHERE category_id=$1;", [@id])
+			erb :category, layout: :layout
 
 		end	
 
+		post '/category/new' do
+			@cat_new = params[:newcat]
+			$db.exec_params("INSERT INTO categories (name) VALUES ($1);", [@cat_new])
+			redirect '/articles/new'
+		end	
+
+
+		not_found do
+		  status 404
+		  erb :notallowed, layout: :layout
+		end
+
 	end # class
-end #module		
+end #module	
+
+
+
+
+
+
+
+

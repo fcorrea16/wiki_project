@@ -1,0 +1,14 @@
+
+<div class="center">
+
+	<h1><%=@category['name'].capitalize%></h1>
+	<br>
+
+	<% @articles.each do |article| %>
+		<a href="/articles/<%=article['id']%>"><%= article['name'] %></a><br><br>
+	<% end %>	
+
+
+</div>
+
+<div class="clearrow"></div>

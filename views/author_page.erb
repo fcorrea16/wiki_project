@@ -1,4 +1,36 @@
 <!-- SHOWS AUTHOR, CONTACT AND WHAT ARTICLES THEY HAVE DONE -->
+<div class="center">
+	<h1><%=@user['fname'].capitalize%> <%=@user['lname'].capitalize%></h1>
+	<br>
+	<p class="margintop"><a href="mailto:<%=@user["email"]%>"><%=@user["email"]%></a></p>
 
 
-<h1><%=@user['fname']%></h1>
+	<% if @arts_created != nil %>
+		<h2>Articles created:</h2>
+			<ul>
+			<% @arts_created.each do |art_created| %>
+				<li><a href="/articles/<%=art_created['id']%>"><%= art_created['name'] %></a></li>
+			<%end%>	
+			</ul>
+	<% else %>
+		<h2>No Articles Created</h2>		
+	<%end %>	
+
+<br>
+
+	<% if @arts_updated == nil %>
+		<ul>	
+			<li>No articles updated.</li>
+		</ul>
+	<% else	 %>
+		<h2>Articles updated:</h2>
+		<ul>	
+			<% @arts_updated.each do |art_updated| %>
+				<li><a href="/articles/<%=art_updated['id']%>"><%= art_updated['name'] %></a></li>
+			<%end%>	
+		</ul>
+	<%end %>	
+
+</div>
+
+<div class="clearrow"></div>

@@ -1,36 +1,45 @@
 <!-- LOGGED IN USER PROFILE -->
-
+<div class="center">
 <h1><%=@user['fname']%></h1>
 
-<form method="POST" action='/login'> 
-	<input type="hidden" name="_method" value="DELETE">
-	<input type="submit" value="Logout" name="logout">
-</form>
+	<form method="post" action="/profile/update">
 
-<p>UPDATE YOUR PROFILE</p>
-<form method="post" action="/profile/update">
-	<label>First Name</label>
-	<input type="text" name="fname" value="<%=@user["fname"]%>">
+		<div class="fleft">
+			<h3 class="margintop">Update your profile</h3>
+				<label>First Name</label>
+				<br>
+				<input class="others" type="text" name="fname" value="<%=@user["fname"]%>">
+				<br>
+				<label>Last Name</label>
+				<br>
+				<input class="others" type="text" name="lname" value="<%=@user["lname"]%>">
+				<br>
+				<label>Email</label>
+				<br>
+				<input class="others" type="text" name="email" value="<%=@user["email"]%>">
+				<br>
+				<label>Bio</label>
+				<br>
+				<textarea name="bio" value="<%=@user["bio"]%>"></textarea>
+		</div>	
 
-	<label>Last Name</label>
-	<input type="text" name="lname" value="<%=@user["lname"]%>">
+		<div class="fleft">
+			<h3 class="margintop">Set new password</h3>	
+			<label>Current Password</label>
+			<br>
+			<input class="others" type="password" name="password1">	
+			<br>
+			<label>New Password</label>
+			<br>
+			<input class="others" type="password" name="password2">		
+			<br>
+			<label>Retype New Password</label>
+			<br>
+			<input class="others" type="password" name="password3">		
+			<br>
+			<input class="button" type="submit" value="Update Profile">
+		</div>
 
-	<label>Email</label>
-	<input type="text" name="email" value="<%=@user["email"]%>">
-
-	<label>Current Password</label>
-	<input type="password" name="password1">	
-
-	<p>Set new password</p>	
-
-	<label>New Password</label>
-	<input type="password" name="password2">		
-
-	<label>Retype New Password</label>
-	<input type="password" name="password3">		
-	<br>
-	<label>Bio</label>
-	<textarea name="bio" value="<%=@user["bio"]%>"></textarea>
-	<input type="submit" value="update profile">
-
-</form>
+	</form>
+</div>
+<div class="clearrow"></div>
