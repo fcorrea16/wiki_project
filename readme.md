@@ -10,7 +10,7 @@ Fernanda Correa at General Assembly WDI 2015.
 
 ##Progamed with
 Ruby, CSS, HTML, and Javacaript with a SQL database. 
-API's: Redcarpet, Sinatra, PG.
+API's: Redcarpet, Sinatra, PG, moment js.
 
 ##To run
 Download zip file. Unzip. Go to directory on bash and type:
