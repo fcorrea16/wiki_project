@@ -4,11 +4,11 @@ INSERT INTO users
 VALUES 
 ('fernanda','correa','nandasc@gmail.com','pass', 'hi'), 
 ('yas','martins','yas@gmail.com','pass2', 'test'), 
-('violet','knockout','vko@gmail.com','pass3', 'hello'), 
+('violet','green','vko@gmail.com','pass3', 'hello'), 
 ('tara','bahgat','tara@gmail.com','pass4', 'what up'), 
 ('duby','sosa','duby@gmail.com','pass5', 'this is me'), 
-('pippi','strongstocking','pips@gmail.com','pass6', 'welcome'), 
-('java','script','js@gmail.com','pass7', 'my articles are kick ass'), 
+('Pippi','Webb','pips@gmail.com','pass6', 'welcome'), 
+('Veronica','Andrews','js@gmail.com','pass7', 'my articles are kick ass'), 
 ('marcy','lang','whisky@gmail.com','pass8', 'hazaaa');
 
 
@@ -19,6 +19,8 @@ VALUES
 ('cheap'), 
 ('new'),
 ('fancy'),
+('breakfast'),
+('donuts'),
 ('traditional');
 
 

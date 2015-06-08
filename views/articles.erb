@@ -4,11 +4,15 @@
 <div class="profile">
 <ul>
 	<% @articles.each do |article| %>
-	<div class="fleft">
+	<div class="fleft margintop">
 	<li><a href="/articles/<%=article["id"]%>"><%=article["name"]%></a></li>
 	<li class="timeset"><%=article["edited_on"]%></li>
 	<li><%= article['content'][0..250]%> ...</li>
 	</div>
+	<div class="fright margintop">
+	<img class="articlepic2" src="<%=article["picture"]%>">
+	</div>
+	<div class="clearrow"></div>
 	<%end%>
 </ul>
 <div class="clearrow"></div>

@@ -13,7 +13,7 @@
 		<div class="nav"> 
 			<div class="login_info">
 				<% if user_login? == true %>
-					<a href="/profile/<%=@user["fname"]%>" class="navlink">My profile</a>
+					<a href="/profile/<%=current_user%>" class="navlink">My profile</a>
 					<form method="POST" action='/login'> 
 						<input class="formlogin"type="hidden" name="_method" value="DELETE">
 						<input class="buttonlogin" type="submit" value="Logout" name="logout">

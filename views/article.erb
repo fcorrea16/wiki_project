@@ -5,7 +5,6 @@
 
 <h3 class="aligncenter"><a href="/author/<%=@article['created_by']%>"><%=@article["fname"]%> <%=@article["lname"]%></a></h3>
 
-
 <% if @article_update == nil %>
 	<br>
 	<h2 class="aligncenter">Created on: <span class="timeset"><%=@article["created_at"]%></span> • Not updated yet.</h2>
@@ -13,14 +12,28 @@
 	<br>
 	<h2 class="aligncenter">Created at: <span class="timeset"><%=@article["created_at"]%></span> • Updated by:  <a href="/author/<%=@article_update['id']%>"><%=@article_update["fname"]%> <%=@article_update["lname"]%></a>  on <span class="timeset"><%=@article["edited_on"]%></span> </h2>
 <%end%>
-
-<br>
-<p><%=@article["content"]%></p>
 <br>
 
 <div class="aligncenter">
-	<a href="/articles/<%=@article["id"]%>/update" class="button"> UPDATE POST</a>
+<img src="<%=@article["picture"]%>" class="articlepic aligncenter">
 </div>
+<br>
+<div><%= markdown(@article["content"]) %> </div>
+<br>
+<div class="aligncenter">
+	<a href="<%=@article["site"]%>"><%=@article["site"]%></a>
+</div>
+<br>
+
+<div class="margintop aligncenter">
+	<% if user_login? == true %>
+		<a href="/articles/<%=@article["id"]%>/update" class="button"> UPDATE POST</a>
+	<% end%>
+</div>
+
+
+
+<div class="clearrow marginbottom"></div>
 
 
 

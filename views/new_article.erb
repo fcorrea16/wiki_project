@@ -1,25 +1,22 @@
 <!-- FORM TO CREATE A NEW ARTICLE -->
-<div class="center">
-	<h1>New</h1>
-
-	<h3 class="new_cat">Create Category</h3>
-	<div class="new_cat_info margintop">
-		<form method="POST" action="/category/new">
-			<br>
-			<label>Category Name</label>
-			<br>
-			<input class="others" type="text" name="newcat">
-			<input class="button" type="submit" value="Add new Category">
-		</form>
-	</div>
+<div class="center marginbottom">
+	<h1>Article</h1>
 
 
 	<form method="post" action="/articles/new/post">
-		<h3 class="new_cat">Create Article</h3>
+		<h3 class="new_cat">Create NEW Article</h3>
 		<br>
 		<label class="margintop">Name of Article</label>
 		<br>
 		<input class="others" name="name" type="text">
+		<br>
+		<label>Site URL</label>
+		<br>
+		<input class="others" name="site" type="text">
+		<br>
+		<label>Picture URL</label>
+		<br>
+		<input class="others" name="picture" type="text">
 		<br>
 		<label>Category</label>
 		<br>
@@ -32,13 +29,11 @@
 		<br>
 		<label>Content</label>
 		<br>
-		<textarea name="content" placeholder="insert your article here"></textarea>
+		<textarea name="content" placeholder="Insert your article here. Optional: use markdown formatting."></textarea>
 		<br>
 		<input class="button" type="submit" value="Add new Article">
 	</form>
 
 
-
 </div>
 
-<div class="clearrow"></div>

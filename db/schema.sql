@@ -8,7 +8,7 @@ CREATE TABLE users (
 	lname 	 	VARCHAR  NOT NULL,
 	email 	 	VARCHAR  NOT NULL,
 	password 	VARCHAR  NOT NULL,
-	bio 		 	VARCHAR
+	bio 		 	VARCHAR,
 	picture		VARCHAR
 );
 
@@ -23,16 +23,10 @@ CREATE TABLE articles (
 	content 		TEXT 			NOT NULL,
 	created_at 	TIMESTAMP NOT NULL,
 	edited_on 	TIMESTAMP NOT NULL,
+	picture 		VARCHAR,
+	site				VARCHAR,
 	category_id INTEGER 	REFERENCES categories(id),
 	created_by 	INTEGER 	REFERENCES users(id),
 	updated_by 	INTEGER		REFERENCES users(id)
 );
 
-
--- REFERENCES categories(id),
--- REFERENCES users(id)
-
--- CREATE TABLE tags (
--- 	id SERIAL PRIMARY KEY,
--- 	name VARCHAR NOT NULL
--- );

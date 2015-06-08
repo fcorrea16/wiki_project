@@ -179,7 +179,7 @@ form {
 /* IMAGES HOME */
 .hand {
 	position: fixed;
-	left: -10px;
+	left: -20px;
 	top: 0;
 }
 
@@ -209,6 +209,9 @@ form {
 
 .margintop {
 	margin-top: 25px;
+}
+
+.marginbottom {
 	margin-bottom: 40px;
 }
 
@@ -257,6 +260,12 @@ textarea {
 	padding-right: 20px;
 }
 
+.fright {
+	float: right;
+	width: 40%;
+}
+
+
 .clearrow {
 	height: 50px;
 	clear: both;
@@ -266,4 +275,24 @@ textarea {
 	text-align: center;
 }
 
+.profilepic{
+	max-width: 200px;
+	max-height: 200px;
+	border-radius: 100px;
+}
+
+.profilepic2{
+	max-width: 300px;
+	max-height: 300px;
+	border-radius: 200px;
+}
+
+.articlepic {
+	max-width: 80%;
+}
+
+.articlepic2 {
+	max-width: 300px;
+	border-radius: 10px;
+}
 

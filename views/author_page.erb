@@ -2,9 +2,11 @@
 <div class="center">
 	<h1><%=@user['fname'].capitalize%> <%=@user['lname'].capitalize%></h1>
 	<br>
+	<img src="<%=@user['picture']%>" class="profilepic2">
 	<p class="margintop"><a href="mailto:<%=@user["email"]%>"><%=@user["email"]%></a></p>
-
-
+	<h2 class="marginbottom"><%=markdown(@user['bio'])%></h2>
+	<br>
+	<div class="fleft">
 	<% if @arts_created != nil %>
 		<h2>Articles created:</h2>
 			<ul>
@@ -13,24 +15,26 @@
 			<%end%>	
 			</ul>
 	<% else %>
-		<h2>No Articles Created</h2>		
+		<h2>No Articles Created</h2>	
 	<%end %>	
+	</div>	
 
-<br>
-
+	<div class="fleft">
 	<% if @arts_updated == nil %>
-		<ul>	
-			<li>No articles updated.</li>
-		</ul>
-	<% else	 %>
-		<h2>Articles updated:</h2>
-		<ul>	
-			<% @arts_updated.each do |art_updated| %>
-				<li><a href="/articles/<%=art_updated['id']%>"><%= art_updated['name'] %></a></li>
-			<%end%>	
-		</ul>
-	<%end %>	
-
-</div>
+			<ul>	
+				<li>No articles updated.</li>
+			</ul>
+		<% else	 %>
+			<h2>Articles updated:</h2>
+			<ul>	
+				<% @arts_updated.each do |art_updated| %>
+					<li><a href="/articles/<%=art_updated['id']%>"><%= art_updated['name'] %></a></li>
+				<%end%>	
+			</ul>		
+	<%end %>
+	</div>	
 
 <div class="clearrow"></div>
+</div>
+	
+

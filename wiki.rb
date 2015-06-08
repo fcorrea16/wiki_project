@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/reloader"
 require "pry"
+require "redcarpet"
 
 require_relative './db/database'
 
@@ -13,6 +14,7 @@ module Wiki
 			register Sinatra::Reloader
 			set :sessions, true
 		end #configure
+
 		
 		def current_user 
 			session[:user_id]
@@ -27,7 +29,8 @@ module Wiki
 		end	#user_login?
 
 		
-
+		# def markdown(text)
+	
 
 		# HOMEPAGE SETUP ----------------------------
 		get '/' do 
@@ -76,9 +79,18 @@ module Wiki
 
     # USER PROFILE SETUP AND EDITING ----------------------------
 
-		get '/profile/:fname' do 
-			@user = $db.exec_params("SELECT * from users WHERE fname = $1;", [params[:fname]]).first
-			if @user['id'] == current_user
+		# get '/profile/:fname' do 
+		# 	@user = $db.exec_params("SELECT * from users WHERE fname = $1;", [params[:fname]]).first
+		# 	if @user['id'] == current_user
+		# 		erb :profile, layout: :layout
+		# 	else
+		# 		redirect '/notallowed'
+		# 	end
+		# end	
+
+		get '/profile/:id' do 
+			@user = $db.exec_params("SELECT * from users WHERE id = $1;", [params[:id]]).first
+			if params[:id] == current_user
 				erb :profile, layout: :layout
 			else
 				redirect '/notallowed'
@@ -86,8 +98,6 @@ module Wiki
 		end	
 
 		get '/notallowed' do  # user does not have acces to other people's profile pages
-			@message1 = "You cannot view this page"
-			@message2 = ""
 			erb :not_allowed, layout: :layout
 		end
 
@@ -96,14 +106,14 @@ module Wiki
 				WHERE id = $1;", [current_user]).first
 
 			if params[:password1] == @user["password"] && params[:password2] == ""
-				$db.exec_params("UPDATE users SET fname=$1, lname=$2, email=$3, bio=$4 WHERE id =$5;", 
-					[params[:fname], params[:lname], params[:email], params[:bio], current_user])
-				redirect "/profile/#{params[:fname]}"		
+				$db.exec_params("UPDATE users SET fname=$1, lname=$2, email=$3, bio=$4, picture=$5 WHERE id =$6;", 
+					[params[:fname], params[:lname], params[:email], params[:bio], params[:picture], current_user])
+				redirect "/profile/#{@user['id']}"		
 			elsif 
 				params[:password1] == @user["password"] && params[:password2] == params[:password3] 
-				$db.exec_params("UPDATE users SET fname=$1, lname=$2, email=$3, password=$4, bio=$5 WHERE id =$6;", 
-					[params[:fname], params[:lname], params[:email], params[:password2], params[:bio], current_user])
-				redirect "/profile/#{params[:fname]}"
+				$db.exec_params("UPDATE users SET fname=$1, lname=$2, email=$3, password=$4, bio=$5, picture=$6 WHERE id =$7;", 
+					[params[:fname], params[:lname], params[:email], params[:password2], params[:bio], params[:picture], current_user])
+				redirect "/profile/#{@user['id']}"
 			end
 		end	
 
@@ -123,17 +133,20 @@ module Wiki
 			@categories_1 = params[:categories_1]
 			@name_article = params[:name]
 			@content = params[:content]
+			@picture = params[:picture]
+			@site = params[:site]
 
 			result = $db.exec_params("INSERT INTO articles 
-				(name, content,category_id, created_by, created_at,edited_on) 
-				VALUES ($1,$2,$3,$4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) 
-				RETURNING id;", [@name_article, @content, @categories_1, current_user])
+				(name, content,category_id, created_by, created_at,edited_on, site, picture) 
+				VALUES ($1,$2,$3,$4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, $5,$6) 
+				RETURNING id;", [@name_article, @content, @categories_1, current_user,@site,@picture])
 			redirect '/articles/all'
 		end	
 
 
 		get '/articles/all' do 
 			@articles = $db.exec_params("SELECT * FROM articles")
+
 			erb :articles, layout: :layout
 		end
 
@@ -160,8 +173,10 @@ module Wiki
 			@id = params[:id]
 			@name = params[:name]
 			@content = params[:content]
-		  $db.exec_params("UPDATE articles SET name=$1, content=$2, edited_on= CURRENT_TIMESTAMP, updated_by=$3 
-				WHERE id=$4;", [@name, @content, current_user, @id])
+			@picture = params[:picture]
+			@site = params[:site]
+		  $db.exec_params("UPDATE articles SET name=$1, content=$2, edited_on= CURRENT_TIMESTAMP, updated_by=$3, picture=$4, site=$5
+				WHERE id=$6;", [@name, @content, current_user, @picture, @site, @id])
 			redirect "/articles/#{@id}"
 		end
 
@@ -211,6 +226,14 @@ module Wiki
 
 	end # class
 end #module	
+
+
+module ApplicationHelper
+	def markdown(text)
+		options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis]
+		Redcarpet.new(text, options).to_html.html_safe
+	end	
+end		
 
 
 

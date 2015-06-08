@@ -1,14 +1,22 @@
 
 <div class="center">
 	
-<h1>Categories</h1>
-<ul class="margintop">
+	<h1>Categories</h1>
+	<ul class="margintop">
+		<br>
+		<% @categories.each do |category| %>
+			<li><a href="/categories/<%=category["id"]%>"><%= category['name'].capitalize%></a></li>
+		<%end%>
+	</ul>	
 	<br>
-	<% @categories.each do |category| %>
-		<li><a href="/categories/<%=category["id"]%>"><%= category['name'].capitalize%></a></li>
-	<%end%>
-</ul>	
+	<h3 class="new_cat margintop">Create Category</h3>
+	<div class="new_cat_info margintop">
+		<form method="POST" action="/category/new">
+			<input class="others" type="text" name="newcat" placeholder="Category Name">
+			<input class="button marginbottom" type="submit" value="Add new Category">
+		</form>
+	</div>
+
 
 </div>
 
-<div class="clearrow"></div>

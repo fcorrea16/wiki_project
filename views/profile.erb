@@ -20,25 +20,36 @@
 				<br>
 				<label>Bio</label>
 				<br>
-				<textarea name="bio" value="<%=@user["bio"]%>"></textarea>
+				<textarea name="bio"><%=@user['bio']%></textarea>
 		</div>	
 
 		<div class="fleft">
+			<h3 class="margintop">Update your picture</h3>	
+			<% if @user["picture"] != "" %>
+				<img src="<%=@user["picture"]%>" class="profilepic margintop">
+			<%end%>
+			<br>
+			<label>Picture</label>
+			<input class="others" type="text" name="picture" value="<%=@user["picture"]%>">
+
 			<h3 class="margintop">Set new password</h3>	
-			<label>Current Password</label>
-			<br>
-			<input class="others" type="password" name="password1">	
-			<br>
-			<label>New Password</label>
+			<label class="margintop">New Password</label>
 			<br>
 			<input class="others" type="password" name="password2">		
 			<br>
 			<label>Retype New Password</label>
 			<br>
-			<input class="others" type="password" name="password3">		
+			<input class="others" type="password" name="password3">	
+			<br>
+		</div>
+		<div class="clearrow"></div>
+			<h3 class="margintop">Save Changes</h3>	
+			<p>Please type your password to save changes.</p>	
+			<label>Current Password</label>
+			<br>
+			<input class="others" type="password" name="password1">	
 			<br>
 			<input class="button" type="submit" value="Update Profile">
-		</div>
 
 	</form>
 </div>
